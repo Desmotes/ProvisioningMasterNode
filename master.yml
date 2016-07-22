@@ -1,0 +1,14 @@
+
+---
+- hosts: master
+  vars:
+        username: desmotes
+  sudo: yes
+
+  tasks:
+
+  - user: name={{username}} shell=/bin/bash/
+
+  #- name: Placing RSA key
+  #  authorized_key: user={{username}} key="{{ lookup('file', '......../.ssh/id_rsa.pub') }}"
+...
