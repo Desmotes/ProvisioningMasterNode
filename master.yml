@@ -1,9 +1,10 @@
 
 ---
+- name: Adding desmotes user  
 - hosts: master
   vars:
         username: desmotes
-  sudo: yes
+  # sudo: yes
 
   tasks:
 
