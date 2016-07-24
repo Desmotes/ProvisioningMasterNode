@@ -1,0 +1,20 @@
+---
+- include_vars: master_vars/master_vars.yml
+
+- name: Adding desmotes user  
+  hosts: master
+  vars:
+        username: desmotes
+  sudo: yes
+
+  tasks:
+
+  - user: name={{username}}
+          shell=/bin/bash/
+          comment="Desmotes user"
+          createhome=yes
+          groups=admin append=yes
+          password= {{desmotes_password}}
+
+  #- name: Placing RSA key
+  #  authorized_key: user={{username}} key="{{ lookup('file', '......../.ssh/id_rsa.pub') }}"
