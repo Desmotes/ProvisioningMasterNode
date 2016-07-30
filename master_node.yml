@@ -1,22 +1,21 @@
 ---
 - name: Master Node  
-  hosts: 127.0.0.1
-  connection: local
-  user: root
+  hosts: ivy
+  gather_facts: false
   vars_files:
-    - vars/vars.yml
+  - vars/pass.yml
   vars:
-        username: desmotes
+    username: desmotes
   
   tasks:
   - name: Adding desmotes user
-    user: name={{username}} shell=/bin/bash groups=root append=yes password={{desmotes}}
-    sudo: yes
-
-  - debug: msg="Pass {{ desmotes }}"
+    user: name=desmotes state=present groups=sudo append=yes shell=/bin/bash password="{{ desmotes_password | password_hash('sha512') }}"
+    become: yes
+    become_method: sudo 
 
   - name: Placing RSA key
-    authorized_key: user={{username}} key="{{ lookup('file', 'id_rsa.pub') }}"
-    sudo: yes
+    authorized_key: user={{username}} key="{{ lookup('file', 'keys/id_rsa.pub') }}"
+    become: yes
+    become_method: sudo
 
-
+  #- debug: msg="Debugging"
