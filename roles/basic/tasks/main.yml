@@ -1,0 +1,14 @@
+---
+# This basic playbook contains essential tasks, which should run on master node
+
+- name: Create Desmotes user
+  user: name={{username}} state=present groups=sudo append=yes shell=/bin/bash password="{{ desmotes_password | password_hash('sha512') }}"
+
+- name: Create Desmotes group
+  group: name=desm-group state=present system=yes
+
+- name: Placing RSA key
+  authorized_key: user={{username}} key="{{ lookup('file', 'keys/id_rsa.pub') }}"
+
+- name: Install build essential
+  apt: name=build-essential state=latest update_cache=yes
