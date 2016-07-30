@@ -9,7 +9,7 @@
   
   tasks:
   - name: Adding desmotes user
-    user: name=desmotes state=present groups=sudo append=yes shell=/bin/bash password="{{ desmotes_password | password_hash('sha512') }}"
+    user: name={{username}} state=present groups=sudo append=yes shell=/bin/bash password="{{ desmotes_password | password_hash('sha512') }}"
     become: yes
     become_method: sudo 
 
