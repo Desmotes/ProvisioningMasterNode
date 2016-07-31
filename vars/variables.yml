@@ -1,0 +1,8 @@
+---
+# Master Node variables
+
+rubyTmpDir: /usr/local/src
+rubyUrl: https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz
+rubyCompressedFile: ruby-2.3.1.tar.gz
+rubyName: ruby-2.3.1
+tmpRubyPath: "{{rubyTmpDir}}/{{rubyName}}"
