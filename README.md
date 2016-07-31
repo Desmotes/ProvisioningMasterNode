@@ -8,7 +8,8 @@ More specifically, this project installs the following parts.
 
 * Desmotes User / Group
 * Build essential
-* Angular
+* Ruby
+* NodeJS
 
 # Installation 
  
@@ -17,6 +18,15 @@ More specifically, this project installs the following parts.
 Initially, you have to create a .vault_pass file with the password (plain text) in the Provisioning root folder
 
 > echo "text" >  .vault_pass 
+
+After that you have to create the pass.yml file using vault mechanism. Don't forget to pass in the creation of the folder the same password like .vault_pass file.
+
+> ansible-vault create vars/pass.yml
+
+
+> ---
+
+> desmotes_password: <password> 
 
 Secondly, you have to copy your rsa keys for desmotes user.
 
