@@ -24,13 +24,12 @@
     - curl
   tags: dependencies
 
-- name: Install app dependencies
-  action: apt pkg={{item}} state=installed
-  with_items:
-    - libpq-dev
-    - nodejs
-    - imagemagick
-  tags: package
+# - name: Install app dependencies
+#   action: apt pkg={{item}} state=installed
+#   with_items:
+#     - libpq-dev
+#     - nodejs
+#   tags: package
 
 # Install correct version of ruby from source
 - name: ruby-from-src | ensure directory temporary ruby download directory is present
@@ -53,3 +52,6 @@
 
 - name: Install Bundler
   command: gem install bundler
+
+- name: Install rails
+  command: gem install rails

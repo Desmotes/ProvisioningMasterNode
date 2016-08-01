@@ -10,5 +10,14 @@
 - name: Placing RSA key
   authorized_key: user={{username}} key="{{ lookup('file', 'keys/id_rsa.pub') }}"
 
-- name: Install build essential
-  apt: name=build-essential state=latest update_cache=yes
+# - name: Install build essential
+#   apt: name=build-essential state=latest update_cache=yes
+
+- name: Install app dependencies
+  action: apt pkg={{item}} state=latest update_cache=yes
+  with_items:
+    - build-essential
+    - nodejs
+    - git
+    -sqlite3
+  tags: package
