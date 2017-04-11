@@ -19,5 +19,4 @@
     - build-essential
     - nodejs
     - git
-    - sqlite3
   tags: package
